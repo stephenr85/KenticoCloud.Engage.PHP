@@ -8,10 +8,12 @@
     <title>Basic Example</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.css" />
     
-    <script>!function(){var a='https://engage-ket.kenticocloud.com/js',b=document,c=b.createElement('script'),d=b.getElementsByTagName('script')[0];c.type='text/javascript',c.async=!0,c.defer=!0,c.src=a+'?d='+document.domain,d.parentNode.insertBefore(c,d)}(),window.ket=window.ket||function(){(ket.q=ket.q||[]).push(arguments)};ket('start', '8681759b-3c71-46d9-9995-77b0f09fc530');</script>
-  	
+    <?php echo $kceScript ?>
+
   </head>
   <body>
+  	<?php require('inc/topbar.php'); ?>
+
     <div class="row">
     	<div class="columns">
 
@@ -20,9 +22,15 @@
     			
 				<p><strong>So, this is your first visit, eh?</strong><br>It's nice to meet you. Refresh the page to engage.</p>
 
+			<?php }else if(!property_exists($loc = $kceClient->getCurrentLocation(), 'city')){ ?>
+				
+				<p>So...I'm only a day old. Try refreshing again.</p>
+				<p>FYI, this was the last response from the API:</p>
+				<pre><?php echo '(HTTP code '.$kceClient->lastResponse->code.') '. ($kceClient->lastResponse->raw_body) ?></pre>
+
 			<?php }else{ ?>
 				<p><strong>Hello again! How's the weather in <?php $loc = $kceClient->getCurrentLocation(); echo $loc->city ?>?</strong><br>
-					Did you know that this is you've visited <?php echo count($kceClient->getCurrentSession()->getActions()) ?> pages in this session? Here's what else we know...
+					Did you know that this is 	you've visited <?php echo count($kceClient->getCurrentSession()->getActions()) ?> pages in this session? Here's what else we know...
 				</p>
 				<p>					
 				User ID: <?php echo $kceClient->getUserID() ?><br>
@@ -43,6 +51,7 @@
 		</div>
 	</div>
 
+	<?php require('inc/footer.php'); ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.min.js"></script>
     <script>

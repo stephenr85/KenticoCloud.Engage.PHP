@@ -1,5 +1,3 @@
 <?php
 
-require_once('vendor/autoload.php');
-
-
+header('Location: http://'.$_SERVER['HTTP_HOST'].'/examples');
