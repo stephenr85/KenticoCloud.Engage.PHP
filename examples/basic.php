@@ -16,15 +16,26 @@
     	<div class="columns">
 
     		<h1>Engage, world!</h1>
-    		<p>	User ID: <?php echo $kceClient->getUserID() ?><br>
+    		<?php if(!$kceClient->getUserID()){ ?>
+    			
+				<p><strong>So, this is your first visit, eh?</strong><br>It's nice to meet you. Refresh the page to engage.</p>
+
+			<?php }else{ ?>
+				<p><strong>Hello again! How's the weather in <?php $loc = $kceClient->getCurrentLocation(); echo $loc->city ?>?</strong><br>
+					Did you know that this is you've visited <?php echo count($kceClient->getCurrentSession()->getActions()) ?> pages in this session? Here's what else we know...
+				</p>
+				<p>					
+				User ID: <?php echo $kceClient->getUserID() ?><br>
     			Session ID: <?php echo $kceClient->getSessionID() ?><br>
-    			Current Location: <?php $loc = $kceClient->getCurrentLocation(); echo $loc->city . ', ' . $loc->state . ', ' . $loc->country; ?><br>
+    			
     			Usual Location: <?php $loc = $kceClient->getUsualLocation(); echo $loc->city . ', ' . $loc->state . ', ' . $loc->country; ?><br>
     			First Visit: <?php echo date('F j, Y, g:i a', $kceClient->getFirstVisit()->visitDateTime) ?><br>
     			Last Visit: <?php echo date('F j, Y, g:i a', $kceClient->getLastVisit()->visitDateTime) ?><br>
     			Activity Summary: <?php echo $kceClient->getActivitySummary() ?><br>
     			Current Session: <?php echo $kceClient->getCurrentSession() ?><br>
-    		</p>
+    			</p>
+			<?php } ?>
+    		
     		<script>
     		ket('getUid', function(uid){ console.log('UID: ' + uid); });
     		ket('getSid', function(sid){ console.log('SID: ' + sid); });
