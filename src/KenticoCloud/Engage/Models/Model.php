@@ -30,10 +30,10 @@ class Model {
 	    if(substr($val, 0, 3) == 'get') {
 	        $varname = lcfirst(substr($val, 3));
 
-	        if(property_exists(get_class($this), $varname)) {
+	        if(property_exists($this, $varname)) {
 		        return $this->$varname;
 		    } else {
-		        throw new Exception('Property does not exist: '.$varname, 500);
+		        throw new \Exception('Property does not exist: '.$varname, 500);
 		    }
 	    }
 	    else if(substr($val, 0, 3) == 'set') {
@@ -42,7 +42,7 @@ class Model {
 	        return $this;
 	    }
 	    else {
-	        throw new Exception('Bad method.', 500);
+	        throw new \Exception('Bad method.', 500);
 	    }
 	    
 	}
