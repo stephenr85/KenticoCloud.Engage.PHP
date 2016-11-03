@@ -1,5 +1,6 @@
 # KenticoCloud.Engage.PHP
 http://kc-engage-php.esiteful.com
+https://packagist.org/packages/esiteful/kenticocloud-engage
 
 This is a PHP implementation for the KenticoCloud Engage API.
 
