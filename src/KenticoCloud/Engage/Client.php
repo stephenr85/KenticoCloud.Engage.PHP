@@ -81,7 +81,8 @@ class Client {
 	public function getRequest($endpoint, $params = null){
 		$uri = rtrim($this->uri, '/').'/'.ltrim($endpoint, '/');
 		if(is_array($params)) $params = http_build_query($params);
-		if(is_string($params)) $uri .= '?' . ltrim($params, '?');
+		if(is_string($params)) $uri = rtrim($uri, '?') . '?' . ltrim($params, '?');
+		
 		$request = \Httpful\Request::get($uri);
 		$request = $this->prepRequest($request);
 		return $request;
@@ -144,7 +145,7 @@ class Client {
 			'pageUrl' => $pageUrl,
 			'customActionName' => $customActionName
 		));
-		$request = $this->getRequest($this->getUserID().'/VisitorActions?'. $params);
+		$request = $this->getRequest($this->getUserID().'/VisitorActions', $params);
 		$response = $this->send();
 		$model = Models\VisitorActions::create($response->body);
 		return $model;
