@@ -1,0 +1,53 @@
+<?php
+
+namespace KenticoCloud\Engage\Models;
+
+
+class Model {
+
+	public function populate($obj){
+		if(is_string($obj)){
+			$obj = json_decode($obj);
+		}
+		$properties = get_object_vars($obj);
+		foreach($properties as $property=>$value){
+			$setMethod = 'set'.ucfirst($property);
+			call_user_func_array(array($this, $setMethod), array($value));
+		}
+		return $this;
+	}
+
+	static public function create($obj = null){
+		$class = get_called_class();
+		$instance = new $class();
+		if($obj){
+			$instance->populate($obj);
+		}
+		return $instance;
+	}
+
+	public function __call($val, $x) {
+	    if(substr($val, 0, 3) == 'get') {
+	        $varname = lcfirst(substr($val, 3));
+
+	        if(property_exists(get_class($this), $varname)) {
+		        return $this->$varname;
+		    } else {
+		        throw new Exception('Property does not exist: '.$varname, 500);
+		    }
+	    }
+	    else if(substr($val, 0, 3) == 'set') {
+	        $varname = lcfirst(substr($val, 3));
+	        $this->$varname = reset($x);
+	        return $this;
+	    }
+	    else {
+	        throw new Exception('Bad method.', 500);
+	    }
+	    
+	}
+
+	public function __toString(){
+		return json_encode($this);
+	}
+}
