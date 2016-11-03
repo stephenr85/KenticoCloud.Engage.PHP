@@ -11,6 +11,7 @@
         <a href="#">Examples</a>
         <ul class="menu vertical">
           <li><a href="/examples/basic.php">Basic</a></li>
+          <li><a href="/examples/form.php">Form</a></li>
         </ul>
       </li>
       <li><a href="/docs/api">API</a></li>

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Basic Example</title>
+    <title>KenticoCloud.Engage.PHP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.css" />
     
     <script><?php echo $kceScript ?></script>
@@ -21,8 +21,6 @@
 
             <p>This is a PHP implementation for the <a href="https://kenticocloud.com/engage" target="_blank">KenticoCloud Engage</a> REST API.</p>
 
-            <p>There's only one example right now, and it's pretty <a href="examples/basic.php">basic</a>.</p>
-            
             <p>View this project on <a href="https://github.com/stephenr85/KenticoCloud.Engage.PHP" target="_blank">GitHub</a>.</p>
 
 		</div>
