@@ -8,7 +8,7 @@
     <title>Basic Example</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.css" />
     
-    <?php echo $kceScript ?>
+    <script><?php echo $kceScript ?></script>
 
   </head>
   <body>

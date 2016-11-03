@@ -8,8 +8,8 @@
     <title>Basic Example</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation.css" />
     
-    <?php echo $kceScript ?>
-    
+    <script><?php echo $kceScript ?></script>
+
   </head>
   <body>
   	<?php require('inc/topbar.php'); ?>
@@ -21,6 +21,8 @@
 
             <p>This is a PHP implementation for the <a href="https://kenticocloud.com/engage" target="_blank">KenticoCloud Engage</a> REST API.</p>
 
+            <p>There's only one example right now, and it's pretty <a href="examples/basic.php">basic</a>.</p>
+            
             <p>View this project on <a href="https://github.com/stephenr85/KenticoCloud.Engage.PHP" target="_blank">GitHub</a>.</p>
 
 		</div>

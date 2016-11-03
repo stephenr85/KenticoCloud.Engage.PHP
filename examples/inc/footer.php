@@ -1,4 +1,4 @@
-<hr>
+<hr style="margin-top: 80px;">
 <div class="row">
 	<div class="columns medium-8">		
 
